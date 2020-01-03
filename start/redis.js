@@ -21,4 +21,4 @@
 /**
  * Binding method from a module saved inside `app/Listeners/News`
  */
-// Redis.subcribe('news', 'News.onMessage')
+// Redis.subscribe('news', 'News.onMessage')
