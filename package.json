@@ -24,7 +24,8 @@
     "@adonisjs/fold": "^4.0.9",
     "@adonisjs/framework": "^5.0.9",
     "@adonisjs/ignitor": "^2.0.8",
-    "@adonisjs/lucid": "^6.1.3"
+    "@adonisjs/lucid": "^6.1.3",
+    "@adonisjs/redis": "^2.0.7"
   },
   "devDependencies": {
     "@adonisjs/cli": "^4.0.12",
