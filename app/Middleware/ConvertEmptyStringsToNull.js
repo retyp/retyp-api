@@ -8,7 +8,7 @@ class ConvertEmptyStringsToNull {
           [key]: request.body[key] !== '' ? request.body[key] : null
         }))
       )
-    } 
+    }
 
     await next()
   }
