@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  retyp-api:
+    container_name: retyp-api
+    hostname: retyp-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: retyp-api:latest
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3333:3333"
+    command: npm run dev
