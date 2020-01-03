@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "adonis serve --dev",
-    "test": "node ace test"
+    "test": "node ace test",
+    "lint": "./node_modules/.bin/eslint ./"
   },
   "keywords": [
     "retyp",
@@ -16,7 +17,7 @@
   ],
   "author": "Arthur Dufour",
   "dependencies": {
-    "@adonisjs/ace": "^6.8.0",
+    "@adonisjs/ace": "^5.0.8",
     "@adonisjs/auth": "^3.0.7",
     "@adonisjs/bodyparser": "^2.0.5",
     "@adonisjs/cors": "^1.0.7",
@@ -31,9 +32,15 @@
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.1.0"
   },
   "autoload": {
     "App": "./app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }
