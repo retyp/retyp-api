@@ -18,6 +18,15 @@ services:
       - retyp-redis
     command: npm run dev
 
+  retyp-pg:
+    container_name: retyp-pg
+    hostname: retyp-pg
+    image: postgres:9.6.16-alpine
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    env_file: .env
+
   retyp-redis:
     container_name: retyp-redis
     hostname: retyp-redis
