@@ -16,7 +16,8 @@ const providers = [
   '@adonisjs/cors/providers/CorsProvider',
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/redis/providers/RedisProvider',
-  '@adonisjs/http-logger/providers/LoggerProvider'
+  '@adonisjs/http-logger/providers/LoggerProvider',
+  '@adonisjs/validator/providers/ValidatorProvider'
 ]
 
 /*
@@ -29,7 +30,8 @@ const providers = [
 |
 */
 const aceProviders = [
-  '@adonisjs/lucid/providers/MigrationsProvider'
+  '@adonisjs/lucid/providers/MigrationsProvider',
+  '@adonisjs/vow/providers/VowProvider'
 ]
 
 /*
