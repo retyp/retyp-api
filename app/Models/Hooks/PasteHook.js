@@ -6,7 +6,7 @@ const Paste = use('App/Models/Paste')
 const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz123456789-_'
 
 PasteHook.generateHash = async (paste) => {
-  paste.hash = await generateUniqueHash(5)
+  paste.hash = await generateUniqueHash(4)
 }
 
 async function generateUniqueHash (length) {
