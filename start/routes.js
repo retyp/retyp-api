@@ -13,8 +13,14 @@
 |
 */
 
+const packageJson = require('../package.json')
+
 const Route = use('Route')
 
-Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
-})
+// Other routes
+Route.get('/', () => ({ version: packageJson.version, uptime: process.uptime() }))
+
+// Pastes
+Route.get('/pastes', 'PasteController.getAll')
+Route.get('/pastes/:hash', 'PasteController.getByHash')
+// Route.post('/pastes', 'PasteController.create').validator('CreatePaste')
