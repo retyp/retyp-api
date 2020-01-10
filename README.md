@@ -7,7 +7,7 @@
 <p align="center">
   <!-- <a href="https://travis-ci.com/retyp/retyp-api"><img src="https://travis-ci.com/retyp/retyp-api.svg?branch=develop" alt="Build status of develop branch"></a> -->
   <!-- <a href='https://coveralls.io/github/retyp/retyp-api?branch=develop'><img src='https://coveralls.io/repos/github/retyp/retyp-api/badge.svg?branch=develop' alt='Coverage Status' /></a> -->
-  <!-- <a href="https://www.codacy.com/app/retyp/retyp-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=retyp/retyp-api&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/7d1894968c994cab8e0852e54aa5463f"/></a> -->
+  <a href="https://www.codacy.com/gh/retyp/retyp-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=retyp/retyp-api&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/c071879b3bf54740aee1ad8f206edb08"/></a>
   <br>
   <a href="https://dependabot.com/"><img src="https://api.dependabot.com/badges/status?host=github&amp;repo=retyp/retyp-api" alt="Dependabot status"></a>
   <a href="https://dependabot.com/"><img src="https://img.shields.io/david/retyp/retyp-api.svg?maxAge=3600" alt="Dependencies status"></a>
