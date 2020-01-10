@@ -10,6 +10,7 @@ services:
   - postgresql
 
 before_script:
+  - cp -a .env.example .env
   - psql -c "CREATE DATABASE retyp_testing;" -U postgres
   - psql -c "CREATE USER retyp WITH PASSWORD 'password';" -U postgres
 
