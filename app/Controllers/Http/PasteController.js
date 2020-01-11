@@ -19,6 +19,16 @@ class PasteController {
     const paste = await Paste.findByOrFail('hash', params.hash)
     return paste
   }
+
+  /**
+   * Store a new paste
+   */
+  async store ({ request }) {
+    const pasteData = request.only(['name', 'content'])
+    const paste = await Paste.create(pasteData)
+    await paste.reload()
+    return paste
+  }
 }
 
 module.exports = PasteController

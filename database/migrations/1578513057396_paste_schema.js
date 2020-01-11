@@ -10,7 +10,7 @@ class PasteSchema extends Schema {
 
       table.string('hash', 4).notNullable().unique().index()
       table.string('name', 64).defaultTo('Untitled')
-      table.text('content').notNullable()
+      table.text('content', 10000).notNullable()
     })
   }
 
