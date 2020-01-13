@@ -16,6 +16,7 @@ const Factory = use('Factory')
 Factory.blueprint('App/Models/Paste', async (faker) => {
   return {
     name: faker.sentence({ words: 3 }),
-    content: faker.paragraph({ sentences: 3 })
+    content: faker.paragraph({ sentences: 3 }),
+    visibility: faker.pickone(['public', 'unlisted'])
   }
 })

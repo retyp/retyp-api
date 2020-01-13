@@ -14,7 +14,8 @@ class StorePaste {
   get rules () {
     return {
       name: 'string|min:1|max:64',
-      content: 'required|string|min:1|max:10000'
+      content: 'required|string|min:1|max:10000',
+      visibility: 'in:public,unlisted'
     }
   }
 }

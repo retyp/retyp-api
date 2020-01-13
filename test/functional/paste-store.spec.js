@@ -9,14 +9,15 @@ trait('DatabaseTransactions')
 
 const paste = {
   name: 'Test paste name',
-  content: 'Test paste content'
+  content: 'Test paste content',
+  visibility: 'public'
 }
 
 // ===============================================================
 // == POST /pastes ===============================================
 // ===============================================================
 
-test('should test that you can create a paste with a default name', async ({ client }) => {
+test('should test that you can create a paste with default values', async ({ client }) => {
   const response = await client
     .post('pastes')
     .send({
@@ -27,7 +28,8 @@ test('should test that you can create a paste with a default name', async ({ cli
   response.assertStatus(200)
   response.assertJSONSubset({
     name: 'Untitled',
-    content: 'some content'
+    content: 'some content',
+    visibility: 'unlisted'
   })
 })
 
@@ -39,6 +41,24 @@ test('should test that you can create a paste', async ({ client }) => {
 
   response.assertStatus(200)
   response.assertJSONSubset(paste)
+})
+
+test('should test that visibility is not valid', async ({ client }) => {
+  const clone = paste
+  clone.visibility = 'notAValidVisibility'
+
+  const response = await client
+    .post('pastes')
+    .send(clone)
+    .end()
+
+  response.assertStatus(400)
+  response.assertJSONSubset({
+    errors: [{
+      source: { pointer: 'visibility' },
+      title: 'in'
+    }]
+  })
 })
 
 test('should test that paste.name has max length', async ({ client }) => {
