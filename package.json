@@ -37,14 +37,14 @@
     "@adonisjs/cli": "^4.0.12",
     "commitizen": "^4.0.3",
     "coveralls": "^3.0.9",
-    "cz-conventional-changelog": "^3.0.2",
+    "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "husky": "^3.1.0",
+    "husky": "^4.2.3",
     "nyc": "^15.0.0"
   },
   "autoload": {
