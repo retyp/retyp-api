@@ -43,6 +43,18 @@ test('should test that you can create a paste', async ({ client }) => {
   response.assertJSONSubset(paste)
 })
 
+test('should test that you can create a paste (with custom hash)', async ({ client }) => {
+  const test = { ...paste, hash: 'aaaa' }
+
+  const response = await client
+    .post('pastes')
+    .send(test)
+    .end()
+
+  response.assertStatus(200)
+  response.assertJSONSubset(test)
+})
+
 test('should test that visibility is not valid', async ({ client }) => {
   const clone = paste
   clone.visibility = 'notAValidVisibility'

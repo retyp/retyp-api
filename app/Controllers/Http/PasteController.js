@@ -24,7 +24,7 @@ class PasteController {
    * Store a new paste
    */
   async store ({ request }) {
-    const pasteData = request.only(['name', 'content', 'visibility'])
+    const pasteData = request.only(['hash', 'name', 'content', 'visibility'])
     const paste = await Paste.create(pasteData)
     await paste.reload()
     return paste
