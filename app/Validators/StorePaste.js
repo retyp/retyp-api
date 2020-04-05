@@ -18,6 +18,17 @@ class StorePaste {
       visibility: 'in:public,unlisted'
     }
   }
+
+  get messages () {
+    return {
+      'name.min': 'Paste name must contain at least 1 character.',
+      'name.max': 'Paste name cannot exceed 64 characters.',
+      'content.required': 'You must provide a valid paste content.',
+      'content.max': 'Paste content cannot exceed 10000 characters.',
+      'content.min': 'Paste content must contain at least 1 character.',
+      'visibility.in': 'Paste visibility can only be PUBLIC or UNLISTED.'
+    }
+  }
 }
 
 module.exports = StorePaste
