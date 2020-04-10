@@ -21,6 +21,14 @@ class PasteController {
   }
 
   /**
+   * Only get paste content from its hash
+   */
+  async getRawByHash ({ params }) {
+    const paste = await Paste.findByOrFail('hash', params.hash)
+    return paste.content
+  }
+
+  /**
    * Store a new paste
    */
   async store ({ request }) {

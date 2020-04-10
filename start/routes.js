@@ -23,4 +23,5 @@ Route.get('/', () => ({ version: packageJson.version, uptime: process.uptime() }
 // Pastes
 Route.get('/pastes', 'PasteController.getAll')
 Route.get('/pastes/:hash', 'PasteController.getByHash')
+Route.get('/pastes/:hash/raw', 'PasteController.getRawByHash')
 Route.post('/pastes', 'PasteController.store').validator('StorePaste')
