@@ -49,3 +49,26 @@ test('should throw error "paste not found"', async ({ client }) => {
 
   response.assertStatus(404)
 })
+
+// ===============================================================
+// == GET /pastes/:hash/raw ======================================
+// ===============================================================
+
+test('should be able to get a raw paste', async ({ client }) => {
+  const paste = await Factory.model('App/Models/Paste').create()
+
+  const response = await client
+    .get(`pastes/${paste.hash}/raw`)
+    .end()
+
+  response.assertStatus(200)
+  await validateAll(response.body, { content: 'string' })
+})
+
+test('should throw error "paste not found"', async ({ client }) => {
+  const response = await client
+    .get('pastes/0000/raw')
+    .end()
+
+  response.assertStatus(404)
+})
