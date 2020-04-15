@@ -1,5 +1,5 @@
-# Node LTS 12.13.1 on alpine
-FROM node:12.13.1-alpine
+# Node LTS 12.16.2 on alpine
+FROM node:12.16.2-alpine
 LABEL maintainer="Retyp"
 
 # add some required packages

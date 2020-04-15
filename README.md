@@ -30,7 +30,7 @@ Retyp's API is built with the following tools :
 
 | Library          | Version | Description                                                                                      |
 | ---------------- | ------- | ------------------------------------------------------------------------------------------------ |
-| [Node.js]        | 12.13.1 | Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.                         |
+| [Node.js]        | 12.16.2 | Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.                         |
 | [Adonis.js]      | 4.1.0   | The Node.js Framework highly focused on developer ergonomics, stability and confidence.          |
 | [PostgreSQL]     | 9.6.16  | The World's Most Advanced Open Source Relational Database.                                       |
 
