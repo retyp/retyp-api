@@ -12,10 +12,12 @@
 */
 
 const Factory = use('Factory')
+const languages = require('../utils/prism-languages.json')
 
 Factory.blueprint('App/Models/Paste', async (faker) => {
   return {
     name: faker.sentence({ words: 3 }),
+    language: faker.pickone(languages),
     content: faker.paragraph({ sentences: 1 }),
     visibility: faker.pickone(['public', 'unlisted'])
   }

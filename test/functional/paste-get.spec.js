@@ -11,6 +11,7 @@ const pasteSchema = {
   id: 'number',
   hash: 'string',
   name: 'string',
+  language: 'string',
   content: 'string'
 }
 
