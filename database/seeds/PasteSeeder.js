@@ -20,6 +20,7 @@ class PasteSeeder {
     await Paste.create({
       hash: 'test',
       name: 'Java Bubble Sorting algorithm',
+      language: 'java',
       content: `public static void bubbleSort(int[] a) {
     boolean sorted = false;
     int temp;
