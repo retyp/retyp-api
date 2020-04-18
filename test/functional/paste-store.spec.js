@@ -10,6 +10,7 @@ trait('DatabaseTransactions')
 const paste = {
   name: 'Test paste name',
   content: 'Test paste content',
+  language: 'html',
   visibility: 'public'
 }
 
@@ -29,6 +30,7 @@ test('should test that you can create a paste with default values', async ({ cli
   response.assertJSONSubset({
     name: 'Untitled',
     content: 'some content',
+    language: null,
     visibility: 'unlisted'
   })
 })
