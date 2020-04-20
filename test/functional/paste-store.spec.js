@@ -31,6 +31,7 @@ test('should test that you can create a paste with default values', async ({ cli
     name: 'Untitled',
     content: 'some content',
     language: null,
+    size: 12,
     visibility: 'unlisted'
   })
 })

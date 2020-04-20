@@ -12,6 +12,7 @@ const pasteSchema = {
   hash: 'string',
   name: 'string',
   language: 'string',
+  size: 'number',
   content: 'string'
 }
 

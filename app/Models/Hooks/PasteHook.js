@@ -1,9 +1,13 @@
 'use strict'
 
+const util = require('util')
+
 const PasteHook = exports = module.exports = {}
 const Paste = use('App/Models/Paste')
 
-const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz123456789-_'
+PasteHook.calculateSize = async (paste) => {
+  paste.size = (new util.TextEncoder().encode(paste.content)).length
+}
 
 PasteHook.generateHash = async (paste) => {
   if (paste.hash) return
@@ -11,6 +15,7 @@ PasteHook.generateHash = async (paste) => {
 }
 
 async function generateUniqueHash (length) {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz123456789-_'
   let exists; let result = ''
 
   do {
