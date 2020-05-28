@@ -46,6 +46,12 @@ jobs:
       - docker push retyp/api:current
       - docker push retyp/api:${PACKAGE_VERSION}
 
+    # Deploy latest API version
+    - stage: Deploy
+      if: branch = master
+      script:
+        - sh .travis/deploy.sh
+        
 cache:
   directories:
     - node_modules
