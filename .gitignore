@@ -12,3 +12,7 @@ tmp
 # Code coverage
 .nyc_output/
 coverage/
+
+# Travis deployment ssh-key
+.travis/deploy_rsa
+.travis/deploy_rsa.pub
