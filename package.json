@@ -1,0 +1,63 @@
+{
+  "name": "retyp-api",
+  "private": true,
+  "version": "0.1.0",
+  "adonis-version": "4.1.0",
+  "description": "Retyp's API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "./node_modules/.bin/adonis serve --dev",
+    "test": "node ace test",
+    "test:coverage": "./node_modules/.bin/nyc --reporter=html --reporter=text-summary node ace test",
+    "test:coveralls": "./node_modules/.bin/nyc report --reporter=text-lcov | coveralls",
+    "lint": "./node_modules/.bin/eslint ./"
+  },
+  "keywords": [
+    "retyp",
+    "retyp-api"
+  ],
+  "author": "Arthur Dufour",
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.8",
+    "@adonisjs/auth": "^3.0.7",
+    "@adonisjs/bodyparser": "^2.0.5",
+    "@adonisjs/cors": "^1.0.7",
+    "@adonisjs/fold": "^4.0.9",
+    "@adonisjs/framework": "^5.0.9",
+    "@adonisjs/http-logger": "^1.0.0",
+    "@adonisjs/ignitor": "^2.0.8",
+    "@adonisjs/lucid": "^6.1.3",
+    "@adonisjs/redis": "^2.0.7",
+    "@adonisjs/validator": "^5.0.6",
+    "@adonisjs/vow": "^1.0.17",
+    "pg": "^8.2.1"
+  },
+  "devDependencies": {
+    "@adonisjs/cli": "^4.0.12",
+    "commitizen": "^4.1.2",
+    "coveralls": "^3.1.0",
+    "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
+    "nyc": "^15.0.1"
+  },
+  "autoload": {
+    "App": "./app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

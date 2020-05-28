@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  retyp-api:
+    container_name: retyp-api
+    hostname: retyp-api
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: retyp-api:latest
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3333:3333"
+    network_mode: host
+    depends_on: 
+      - retyp-pg
+      - retyp-redis
+    command: npm run dev
+
+  retyp-pg:
+    container_name: retyp-pg
+    hostname: retyp-pg
+    image: postgres:9.6.16-alpine
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    network_mode: host
+    env_file: .env
+
+  retyp-redis:
+    container_name: retyp-redis
+    hostname: retyp-redis
+    image: redis:5.0.7-alpine3.11
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    network_mode: host
+    command: redis-server --requirepass ${REDIS_PASSWORD}
