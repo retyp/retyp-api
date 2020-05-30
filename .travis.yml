@@ -8,6 +8,7 @@ node_js:
 
 services:
   - postgresql
+  - redis
 
 before_script:
   - cp -a .env.example .env
