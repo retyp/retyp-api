@@ -46,25 +46,12 @@ test('should test that you can create a paste', async ({ client }) => {
   response.assertJSONSubset(paste)
 })
 
-test('should test that you can create a paste (with custom hash)', async ({ client }) => {
-  const test = { ...paste, hash: 'aaaa' }
-
-  const response = await client
-    .post('pastes')
-    .send(test)
-    .end()
-
-  response.assertStatus(200)
-  response.assertJSONSubset(test)
-})
-
 test('should test that visibility is not valid', async ({ client }) => {
-  const clone = paste
-  clone.visibility = 'notAValidVisibility'
+  paste.visibility = 'notAValidVisibility'
 
   const response = await client
     .post('pastes')
-    .send(clone)
+    .send(paste)
     .end()
 
   response.assertStatus(400)
@@ -74,10 +61,13 @@ test('should test that visibility is not valid', async ({ client }) => {
       title: 'in'
     }]
   })
+
+  paste.visibility = 'public'
 })
 
 test('should test that paste.name has max length', async ({ client }) => {
   await testMaxLengthField('name', 70, paste, 'pastes', client)
+  paste.name = 'A simple name'
 })
 
 test('should test that paste.content is required', async ({ client }) => {
@@ -86,4 +76,68 @@ test('should test that paste.content is required', async ({ client }) => {
 
 test('should test that paste.content has max length', async ({ client }) => {
   await testMaxLengthField('content', 10001, paste, 'pastes', client)
+  paste.content = 'A simple content'
+})
+
+// ===============================================================
+// == POST /pastes/temp ==========================================
+// ===============================================================
+
+test('should test that you can create a paste with default values', async ({ client }) => {
+  const response = await client
+    .post('pastes/temp')
+    .send({ content: 'some content' })
+    .end()
+
+  response.assertStatus(200)
+  response.assertJSONSubset({
+    name: 'Untitled',
+    content: 'some content',
+    language: null,
+    size: 12,
+    visibility: 'unlisted'
+  })
+})
+
+test('should test that you can create a paste', async ({ client }) => {
+  const response = await client
+    .post('pastes/temp')
+    .send(paste)
+    .end()
+
+  response.assertStatus(200)
+  response.assertJSONSubset(paste)
+})
+
+test('should test that visibility is not valid', async ({ client }) => {
+  paste.visibility = 'notAValidVisibility'
+
+  const response = await client
+    .post('pastes')
+    .send(paste)
+    .end()
+
+  response.assertStatus(400)
+  response.assertJSONSubset({
+    errors: [{
+      source: { pointer: 'visibility' },
+      title: 'in'
+    }]
+  })
+
+  paste.visibility = 'public'
+})
+
+test('should test that paste.name has max length', async ({ client }) => {
+  await testMaxLengthField('name', 70, paste, 'pastes', client)
+  paste.name = 'A simple name'
+})
+
+test('should test that paste.content is required', async ({ client }) => {
+  await testRequireField('content', paste, 'pastes', client)
+})
+
+test('should test that paste.content has max length', async ({ client }) => {
+  await testMaxLengthField('content', 10001, paste, 'pastes', client)
+  paste.content = 'A simple content'
 })
