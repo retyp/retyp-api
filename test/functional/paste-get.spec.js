@@ -42,7 +42,7 @@ test('should be able to get a paste (from redis)', async ({ client }) => {
     .end()
 
   response.assertStatus(200)
-  await validateAll(response.body, pasteSchema)
+  await validateAll(response.body, { ...pasteSchema, ttl: 'number' })
 })
 
 test('should throw error "paste not found"', async ({ client }) => {

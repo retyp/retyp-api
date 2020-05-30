@@ -9,9 +9,14 @@ class PasteController {
    */
   async getByHash ({ params }) {
     let paste = await Redis.get(params.hash)
-    paste
-      ? paste = JSON.parse(paste)
-      : paste = await Paste.findByOrFail('hash', params.hash)
+
+    if (paste) {
+      paste = JSON.parse(paste)
+      paste.ttl = await Redis.ttl(params.hash)
+    } else {
+      paste = await Paste.findByOrFail('hash', params.hash)
+    }
+
     return paste
   }
 
