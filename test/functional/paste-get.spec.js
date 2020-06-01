@@ -17,23 +17,10 @@ const pasteSchema = {
 }
 
 // ===============================================================
-// == GET /pastes ================================================
-// ===============================================================
-
-test('should be able to get all pastes', async ({ client }) => {
-  const response = await client
-    .get('pastes')
-    .end()
-
-  response.assertStatus(200)
-  await validateAll(response.body, pasteSchema)
-})
-
-// ===============================================================
 // == GET /pastes/:hash ==========================================
 // ===============================================================
 
-test('should be able to get a paste', async ({ client }) => {
+test('should be able to get a paste (from pg)', async ({ client }) => {
   const paste = await Factory.model('App/Models/Paste').create()
 
   const response = await client
@@ -42,6 +29,20 @@ test('should be able to get a paste', async ({ client }) => {
 
   response.assertStatus(200)
   await validateAll(response.body, pasteSchema)
+})
+
+test('should be able to get a paste (from redis)', async ({ client }) => {
+  const res = await client
+    .post('pastes/temp')
+    .send({ content: 'some content' })
+    .end()
+
+  const response = await client
+    .get(`pastes/${res.body.hash}`)
+    .end()
+
+  response.assertStatus(200)
+  await validateAll(response.body, { ...pasteSchema, ttl: 'number' })
 })
 
 test('should throw error "paste not found"', async ({ client }) => {

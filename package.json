@@ -1,7 +1,7 @@
 {
   "name": "retyp-api",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "adonis-version": "4.1.0",
   "description": "Retyp's API",
   "main": "server.js",
@@ -52,7 +52,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint && npm run test"
     }
   },
   "config": {
