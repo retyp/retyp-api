@@ -55,8 +55,10 @@ class PasteController {
     paste.delete()
 
     // save it
+    const DEFAULT_TTL = 24 * 60 * 60
     await Redis.set(paste.hash, JSON.stringify(paste))
-    await Redis.expire(paste.hash, 24 * 60 * 60)
+    await Redis.expire(paste.hash, DEFAULT_TTL)
+    paste.ttl = DEFAULT_TTL
 
     response.status(201).send(paste)
   }

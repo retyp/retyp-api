@@ -95,7 +95,8 @@ test('should test that you can create a paste with default values', async ({ cli
     content: 'some content',
     language: null,
     size: 12,
-    visibility: 'unlisted'
+    visibility: 'unlisted',
+    ttl: 24 * 60 * 60
   })
 })
 
@@ -106,7 +107,7 @@ test('should test that you can create a paste', async ({ client }) => {
     .end()
 
   response.assertStatus(201)
-  response.assertJSONSubset(paste)
+  response.assertJSONSubset({ ...paste, ttl: 24 * 60 * 60 })
 })
 
 test('should test that visibility is not valid', async ({ client }) => {
