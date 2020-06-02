@@ -26,7 +26,7 @@ test('should test that you can create a paste with default values', async ({ cli
     })
     .end()
 
-  response.assertStatus(200)
+  response.assertStatus(201)
   response.assertJSONSubset({
     name: 'Untitled',
     content: 'some content',
@@ -42,7 +42,7 @@ test('should test that you can create a paste', async ({ client }) => {
     .send(paste)
     .end()
 
-  response.assertStatus(200)
+  response.assertStatus(201)
   response.assertJSONSubset(paste)
 })
 
@@ -89,7 +89,7 @@ test('should test that you can create a paste with default values', async ({ cli
     .send({ content: 'some content' })
     .end()
 
-  response.assertStatus(200)
+  response.assertStatus(201)
   response.assertJSONSubset({
     name: 'Untitled',
     content: 'some content',
@@ -105,7 +105,7 @@ test('should test that you can create a paste', async ({ client }) => {
     .send(paste)
     .end()
 
-  response.assertStatus(200)
+  response.assertStatus(201)
   response.assertJSONSubset(paste)
 })
 

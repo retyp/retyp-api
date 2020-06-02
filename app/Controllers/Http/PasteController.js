@@ -34,19 +34,19 @@ class PasteController {
   /**
    * Store a new permanent paste
    */
-  async store ({ request }) {
+  async store ({ response, request }) {
     const pasteData = request.only(['name', 'language', 'content', 'visibility'])
 
     const paste = await Paste.create(pasteData)
     await paste.reload()
 
-    return paste
+    response.status(201).send(paste)
   }
 
   /**
    * Store a new temporary paste
    */
-  async storeTemp ({ request }) {
+  async storeTemp ({ response, request }) {
     const pasteData = request.only(['name', 'language', 'content', 'visibility'])
 
     // create and instant delete to set defaults
@@ -58,7 +58,7 @@ class PasteController {
     await Redis.set(paste.hash, JSON.stringify(paste))
     await Redis.expire(paste.hash, 24 * 60 * 60)
 
-    return paste
+    response.status(201).send(paste)
   }
 }
 
