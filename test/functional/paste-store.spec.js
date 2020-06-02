@@ -83,7 +83,7 @@ test('should test that paste.content has max length', async ({ client }) => {
 // == POST /pastes/temp ==========================================
 // ===============================================================
 
-test('should test that you can create a paste with default values', async ({ client }) => {
+test('should test that you can create a temp paste with default values', async ({ client }) => {
   const response = await client
     .post('pastes/temp')
     .send({ content: 'some content' })
@@ -96,18 +96,20 @@ test('should test that you can create a paste with default values', async ({ cli
     language: null,
     size: 12,
     visibility: 'unlisted',
-    ttl: 24 * 60 * 60
+    ttl: 24 * 3600
   })
 })
 
-test('should test that you can create a paste', async ({ client }) => {
+test('should test that you can create a temp paste', async ({ client }) => {
+  paste.ttl = 6 * 3600
+
   const response = await client
     .post('pastes/temp')
     .send(paste)
     .end()
 
   response.assertStatus(201)
-  response.assertJSONSubset({ ...paste, ttl: 24 * 60 * 60 })
+  response.assertJSONSubset({ ...paste, ttl: 6 * 3600 })
 })
 
 test('should test that visibility is not valid', async ({ client }) => {

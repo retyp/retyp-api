@@ -48,17 +48,16 @@ class PasteController {
    */
   async storeTemp ({ response, request }) {
     const pasteData = request.only(['name', 'language', 'content', 'visibility'])
+    const ttl = request.input('ttl', 24 * 3600)
 
     // create and instant delete to set defaults
     const paste = await Paste.create(pasteData)
     await paste.reload()
     paste.delete()
 
-    // save it
-    const DEFAULT_TTL = 24 * 60 * 60
     await Redis.set(paste.hash, JSON.stringify(paste))
-    await Redis.expire(paste.hash, DEFAULT_TTL)
-    paste.ttl = DEFAULT_TTL
+    await Redis.expire(paste.hash, ttl)
+    paste.ttl = ttl
 
     response.status(201).send(paste)
   }
