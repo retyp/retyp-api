@@ -32,6 +32,14 @@ jobs:
         - npm run lint
         - npm run test:coverage
         - npm run test:coveralls
+      after_success:
+        - wget https://raw.githubusercontent.com/retyp/travis-discord-webhook/master/send.sh
+        - chmod +x send.sh
+        - ./send.sh success $DISCORD_WEBHOOK_URL
+      after_failure:
+        - wget https://raw.githubusercontent.com/retyp/travis-discord-webhook/master/send.sh
+        - chmod +x send.sh
+        - ./send.sh failure $DISCORD_WEBHOOK_URL
 
     # Build and push current version
     - stage: Build Docker image
