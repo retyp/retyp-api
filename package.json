@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@adonisjs/cli": "^4.0.12",
-    "commitizen": "^4.1.2",
+    "commitizen": "^4.1.5",
     "coveralls": "^3.1.0",
     "cz-conventional-changelog": "^3.2.0",
     "eslint": "^7.2.0",
